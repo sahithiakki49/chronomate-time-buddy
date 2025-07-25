@@ -3,13 +3,14 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Play, Mic, Download, Github, Linkedin, Twitter } from 'lucide-react';
-import { AIAssistant } from '@/components/AIAssistant';
+import { PersonalizedAI } from '@/components/PersonalizedAI';
 import { MoodSlider } from '@/components/MoodSlider';
 import { Timeline } from '@/components/Timeline';
 import { Analytics } from '@/components/Analytics';
 import { CustomizationVault } from '@/components/CustomizationVault';
 import { FloatingAssistant } from '@/components/FloatingAssistant';
 import { SuccessAnimation } from '@/components/SuccessAnimation';
+import { TextAnimation, TypewriterText, WaveText, BounceText, GlowText, FloatingText } from '@/components/TextAnimations';
 import { toast } from 'sonner';
 
 const Index = () => {
@@ -57,10 +58,10 @@ const Index = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-6xl md:text-8xl font-bold mb-6 gradient-text">
-              ChronoMate
+              <TypewriterText duration={0.1}>ChronoMate</TypewriterText>
             </h1>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8">
-              Because time deserves to care for you too.
+              <WaveText delay={1}>Because time deserves to care for you too.</WaveText>
             </p>
           </motion.div>
 
@@ -100,7 +101,7 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold mb-12 gradient-text"
           >
-            We're all busy, but not always balanced.
+            <BounceText delay={0.5}>We're all busy, but not always balanced.</BounceText>
           </motion.h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -116,9 +117,15 @@ const Index = () => {
                 transition={{ delay: index * 0.2 }}
               >
                 <Card className="glass p-8 h-full">
-                  <div className="text-4xl mb-4">{item.icon}</div>
-                  <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
-                  <p className="text-muted-foreground">{item.desc}</p>
+                  <div className="text-4xl mb-4">
+                    <FloatingText>{item.icon}</FloatingText>
+                  </div>
+                  <h3 className="text-xl font-semibold mb-2">
+                    <WaveText delay={0.5}>{item.title}</WaveText>
+                  </h3>
+                  <p className="text-muted-foreground">
+                    <TypewriterText delay={1} duration={0.03}>{item.desc}</TypewriterText>
+                  </p>
                 </Card>
               </motion.div>
             ))}
@@ -130,7 +137,7 @@ const Index = () => {
             transition={{ delay: 0.8 }}
             className="text-lg text-muted-foreground mt-12 italic"
           >
-            "Your calendar should care about <em>you</em>, not just time."
+            <GlowText delay={1.5}>"Your calendar should care about <em>you</em>, not just time."</GlowText>
           </motion.p>
         </div>
       </section>
@@ -143,9 +150,9 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold text-center mb-12 gradient-text"
           >
-            Meet Your AI Assistant
+            <WaveText>Meet Your Personalized AI Assistant</WaveText>
           </motion.h2>
-          <AIAssistant mood={currentMood} onReminderCreated={handleReminderCreated} />
+          <PersonalizedAI mood={currentMood} onReminderCreated={handleReminderCreated} />
         </div>
       </section>
 
@@ -157,7 +164,7 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold text-center mb-12 gradient-text"
           >
-            Dynamic Daily Timeline
+            <BounceText>Dynamic Daily Timeline</BounceText>
           </motion.h2>
           <Timeline />
         </div>
@@ -171,7 +178,7 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold text-center mb-4 gradient-text"
           >
-            ChronoMate doesn't just remind.
+            <TypewriterText duration={0.08}>ChronoMate doesn't just remind.</TypewriterText>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -179,7 +186,7 @@ const Index = () => {
             transition={{ delay: 0.2 }}
             className="text-xl text-center mb-12 italic"
           >
-            It <em>understands</em>.
+            <GlowText delay={2}>It <em>understands</em>.</GlowText>
           </motion.p>
           <MoodSlider onMoodChange={handleMoodChange} />
         </div>
@@ -193,7 +200,7 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold text-center mb-12 gradient-text"
           >
-            Weekly Habit Analytics
+            <WaveText>Weekly Habit Analytics</WaveText>
           </motion.h2>
           <Analytics />
         </div>
@@ -207,7 +214,7 @@ const Index = () => {
             whileInView={{ opacity: 1, y: 0 }}
             className="text-4xl font-bold text-center mb-12 gradient-text"
           >
-            Customization Vault
+            <BounceText>Customization Vault</BounceText>
           </motion.h2>
           <CustomizationVault />
         </div>
