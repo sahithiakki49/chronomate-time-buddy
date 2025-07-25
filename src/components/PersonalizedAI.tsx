@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { useSpeechSynthesis, useSpeechRecognition } from 'react-speech-kit';
 import { toast } from 'sonner';
 import { useUserProfile } from '@/hooks/useUserProfile';
-import { TextAnimation, TypewriterText, WaveText } from './TextAnimations';
+
 
 interface Message {
   id: string;
@@ -190,9 +190,9 @@ export const PersonalizedAI: React.FC<PersonalizedAIProps> = ({ mood = "neutral"
         <div className="flex items-center gap-3">
           <div className="text-3xl animate-pulse-glow">🤖</div>
           <div>
-            <TypewriterText className="text-lg font-semibold">
+            <div className="text-lg font-semibold">
               Your Personalized AI Assistant
-            </TypewriterText>
+            </div>
             <div className="flex gap-2 mt-1">
               <Badge variant="secondary" className="text-xs">
                 {profile.history.interactions} interactions
@@ -222,7 +222,7 @@ export const PersonalizedAI: React.FC<PersonalizedAIProps> = ({ mood = "neutral"
           className="mb-4"
         >
           <Card className="glass-strong p-4">
-            <WaveText className="font-semibold mb-3">Your Profile</WaveText>
+            <div className="font-semibold mb-3">Your Profile</div>
             <div className="grid grid-cols-2 gap-4 text-sm">
               <div>
                 <span className="text-muted-foreground">Focus Areas:</span>
@@ -268,13 +268,7 @@ export const PersonalizedAI: React.FC<PersonalizedAIProps> = ({ mood = "neutral"
                     : 'bg-primary/80 text-primary-foreground'
                 }`}
               >
-                {message.isBot ? (
-                  <TextAnimation type="typewriter" duration={0.03}>
-                    {message.text}
-                  </TextAnimation>
-                ) : (
-                  message.text
-                )}
+                {message.text}
               </div>
             </motion.div>
           ))}
@@ -334,16 +328,16 @@ export const PersonalizedAI: React.FC<PersonalizedAIProps> = ({ mood = "neutral"
             animate={{ opacity: 1, scale: 1 }}
             className="mt-2 text-center text-sm text-primary animate-pulse"
           >
-            🎤 <TextAnimation type="wave">Listening... Speak now!</TextAnimation>
+            🎤 Listening... Speak now!
           </motion.div>
         )}
       </Card>
 
       {/* Smart Prompts */}
       <div className="grid grid-cols-1 gap-2">
-        <WaveText className="text-sm text-muted-foreground mb-2">
+        <div className="text-sm text-muted-foreground mb-2">
           Personalized suggestions for you:
-        </WaveText>
+        </div>
         {smartPrompts.map((prompt, index) => (
           <motion.button
             key={index}
@@ -355,9 +349,7 @@ export const PersonalizedAI: React.FC<PersonalizedAIProps> = ({ mood = "neutral"
             transition={{ delay: index * 0.1 }}
             className="p-3 text-sm bg-muted/30 hover:bg-muted/50 rounded-xl border border-border/50 hover:border-primary/50 transition-all duration-200 text-left hover:glow"
           >
-            <TextAnimation type="floating" delay={index * 0.2}>
-              {prompt}
-            </TextAnimation>
+            {prompt}
           </motion.button>
         ))}
       </div>
