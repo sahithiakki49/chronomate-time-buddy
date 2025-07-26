@@ -66,4 +66,4 @@ if ($LASTEXITCODE -eq 0) {
     Write-Host "❌ Build failed. Check for errors above." -ForegroundColor Red
 }
 
-Write-Host "`n🎉 Ready for hackathon submission!" -ForegroundColor Green 
+Write-Host "`n🎉 Ready for hackathon submission!" -ForegroundColor Green

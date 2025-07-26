@@ -255,4 +255,4 @@ Provide 3 specific, actionable suggestions for optimizing their daily schedule.`
 }
 
 // Export singleton instance
-export const chronoMateAI = new ChronoMateAI(); 
+export const chronoMateAI = new ChronoMateAI();
